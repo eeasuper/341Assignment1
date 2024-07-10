@@ -20,7 +20,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update() {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            jumpKeyWasPressed = true;
+                
+
+                jumpKeyWasPressed = true;
         }
 
         horizontalInput = Input.GetAxis("Horizontal");
@@ -28,12 +30,14 @@ public class Player : MonoBehaviour
 
     //this is run every physics update
     private void FixedUpdate() {
+
         rigidBodyComponent.velocity = new Vector3(horizontalInput, rigidBodyComponent.velocity.y, 0);
         if (Physics.OverlapSphere(groundCheckTransform.position, 0.1f, playerMask).Length == 0) //could have done CheckSphere
         {
             return;
         }
         if (jumpKeyWasPressed) {
+
             float jumpPower = 5f;
             if (superJumpsRemaining > 0) {
                 jumpPower *= 2;
